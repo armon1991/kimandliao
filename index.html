@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>진하♥야멍 高雄五天四夜</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&amp;family=Noto+Sans+KR:wght@400;500;700;800&amp;family=Noto+Serif+KR:wght@500;700;800&amp;family=Noto+Serif+TC:wght@500;700;900&amp;family=Montserrat:wght@500;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg:#07111d;
+      --bg-2:#0a1630;
+      --ink:#182131;
+      --muted:#66748b;
+      --line:#dfe6f0;
+      --card:rgba(255,255,255,.94);
+      --card2:#f7f9fd;
+      --cyan:#33d8ff;
+      --blue:#38bdf8;
+      --purple:#8b5cf6;
+      --pink:#ec4899;
+      --mint:#18c5b7;
+      --shadow:0 26px 60px rgba(7,17,29,.18);
+      --soft:0 16px 34px rgba(15,23,42,.10);
+      --radius:28px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      color:var(--ink);
+      font-family:"Noto Sans TC","Noto Sans KR",sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(51,216,255,.22), transparent 26%),
+        radial-gradient(circle at 92% 8%, rgba(236,72,153,.16), transparent 24%),
+        radial-gradient(circle at 84% 22%, rgba(139,92,246,.18), transparent 18%),
+        linear-gradient(180deg, #060f1d 0%, #0a1630 18%, #eef3fb 18%, #f7f9fd 100%);
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1180px, calc(100vw - 28px)); margin:0 auto; }
+    .hero { padding:28px 0 22px; }
+    .hero-box {
+      position:relative; overflow:hidden; border-radius:34px; box-shadow:var(--shadow);
+      padding:34px 32px 28px; color:#fff;
+      background:
+        linear-gradient(135deg, rgba(4,12,28,.76), rgba(6,18,35,.54)),
+        radial-gradient(circle at 78% 16%, rgba(51,216,255,.18), transparent 18%),
+        radial-gradient(circle at 80% 26%, rgba(139,92,246,.22), transparent 22%),
+        radial-gradient(circle at 18% 72%, rgba(24,197,183,.16), transparent 24%),
+        linear-gradient(135deg, #08172f 0%, #0d2744 38%, #281e54 74%, #45174a 100%);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .hero-box::after {
+      content:""; position:absolute; inset:auto -80px -80px auto; width:260px; height:260px; border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.12), rgba(255,255,255,0)); filter:blur(6px);
+    }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:999px;
+      background:rgba(255,255,255,.10); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.12);
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:800;
+    }
+    h1 {
+      margin:18px 0 10px; line-height:1.02; letter-spacing:-.04em;
+      font-size:clamp(34px, 6vw, 64px);
+      font-family:"Noto Serif TC","Noto Serif KR",serif; font-weight:900;
+    }
+    .hero-sub { color:rgba(255,255,255,.82); font-size:18px; margin-bottom:22px; }
+    .kr { display:block; margin-top:4px; font-family:"Noto Sans KR","Noto Sans TC",sans-serif; color:#6b7588; font-size:.93em; line-height:1.55; }
+    .hero .kr { color:rgba(255,255,255,.72); }
+    .summary-grid,.weather-grid { display:grid; gap:14px; }
+    .summary-grid { grid-template-columns:repeat(4,minmax(0,1fr)); margin-bottom:14px; }
+    .weather-grid { grid-template-columns:repeat(5,minmax(0,1fr)); }
+    .glass-card {
+      background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.12); border-radius:22px; padding:16px;
+      backdrop-filter:blur(14px);
+    }
+    .label { font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:800; color:rgba(255,255,255,.58); margin-bottom:8px; }
+    .value { font-size:19px; font-weight:800; line-height:1.32; }
+    .weather-card .date { font-weight:800; font-size:14px; }
+    .weather-card .temp { font-size:21px; font-weight:900; margin:8px 0 6px; }
+    .hotel-map { display:inline-flex; align-items:center; gap:8px; margin-top:10px; padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16); font-weight:800; }
+    .section-tools { display:flex; justify-content:flex-end; gap:10px; margin:20px 0 12px; }
+    .tool-btn { border:none; background:#fff; color:#0f172a; padding:12px 16px; border-radius:999px; font-weight:800; box-shadow:var(--soft); cursor:pointer; }
+    .days { display:grid; gap:18px; padding-bottom:42px; }
+    details.day { background:var(--card); border:1px solid var(--line); border-radius:28px; overflow:hidden; box-shadow:var(--soft); }
+    summary { list-style:none; cursor:pointer; padding:18px 20px; display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center; }
+    summary::-webkit-details-marker { display:none; }
+    .badge { width:76px; height:76px; border-radius:24px; display:grid; place-items:center; color:#fff; font-weight:900; font-size:22px;
+      background:linear-gradient(135deg, var(--cyan), var(--purple) 58%, var(--pink));
+      box-shadow:0 14px 30px rgba(93,89,255,.28);
+    }
+    .sum-title { font-size:24px; font-weight:900; line-height:1.2; }
+    .sum-date { color:#5a687c; font-weight:700; margin-top:6px; }
+    .arrow { width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background:#fff; border:1px solid var(--line); color:#3f4f66; transition:transform .2s ease; }
+    details[open] .arrow { transform:rotate(180deg); }
+    .day-body { padding:0 16px 18px; }
+    .row-list { display:grid; gap:12px; border-top:1px solid var(--line); padding-top:14px; }
+    .item {
+      display:grid; grid-template-columns:86px 1fr 130px 112px; gap:14px; align-items:start;
+      padding:14px 14px 12px; border-radius:24px; background:linear-gradient(180deg, #fbfdff, #f5f8fd);
+      border:1px solid var(--line);
+    }
+    .time { font-family:"Montserrat","Noto Sans KR","Noto Sans TC",sans-serif; font-size:21px; font-weight:800; color:#0f8a82; letter-spacing:-.04em; }
+    .title { font-size:18px; font-weight:900; line-height:1.4; }
+    .meta { margin-top:10px; padding:12px 13px; background:#fff; border:1px solid var(--line); border-radius:18px; color:#556579; font-size:13px; line-height:1.65; }
+    .meta b { color:#111827; }
+    .stops { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .stop-chip {
+      display:flex; flex-direction:column; gap:2px; min-width:116px; padding:8px 10px; border-radius:14px;
+      background:linear-gradient(135deg, rgba(56,189,248,.12), rgba(139,92,246,.10));
+      border:1px solid #dce8f6; font-size:12px;
+    }
+    .stop-chip strong { font-size:12px; color:#152033; }
+    .stop-chip span { color:#67768b; font-family:"Noto Sans KR","Noto Sans TC",sans-serif; line-height:1.35; }
+    .price { font-weight:800; text-align:right; font-size:14px; white-space:nowrap; }
+    .price small { display:block; color:#7b8797; font-size:11px; letter-spacing:.10em; margin-bottom:4px; }
+    .map-btn,.sub-map-btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:7px; color:#fff; font-weight:900;
+      background:linear-gradient(135deg, var(--cyan), var(--mint) 45%, var(--purple));
+      border-radius:18px; box-shadow:0 14px 28px rgba(56,189,248,.26); transition:.18s ease;
+    }
+    .map-btn { width:108px; min-height:58px; padding:0 10px; font-size:13px; text-align:center; }
+    .sub-map-btn { width:84px; min-height:44px; font-size:12px; }
+    .map-btn:hover,.sub-map-btn:hover,.hotel-map:hover,.stop-chip:hover { transform:translateY(-2px); }
+    .sublist { display:grid; gap:8px; margin-top:10px; }
+    .subitem { display:grid; grid-template-columns:1fr 102px 84px; gap:10px; align-items:center; padding:10px 12px; border-radius:16px; border:1px solid var(--line); background:#fff; }
+    .subitem .name { font-weight:800; line-height:1.42; }
+    .note { margin-top:18px; background:#fff; border:1px solid var(--line); border-radius:24px; padding:16px 18px; color:#56657a; box-shadow:var(--soft); }
+    .note strong { display:block; color:#0f172a; margin-bottom:6px; }
+    .footer { padding:8px 0 40px; color:#6b7280; font-size:14px; }
+    @media (max-width: 1024px) {
+      .summary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .weather-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width: 760px) {
+      .wrap { width:min(100vw - 18px, 1180px); }
+      .hero-box { padding:24px 18px 22px; border-radius:28px; }
+      summary { padding:16px; }
+      .badge { width:64px; height:64px; border-radius:20px; }
+      .sum-title { font-size:20px; }
+      .section-tools { display:grid; grid-template-columns:1fr 1fr; }
+      .item { grid-template-columns:1fr 108px; grid-template-areas:'time map' 'main map' 'price map'; }
+      .time { grid-area:time; }
+      .content { grid-area:main; }
+      .price { grid-area:price; text-align:left; }
+      .map-btn { grid-area:map; align-self:center; }
+      .subitem { grid-template-columns:1fr 96px 84px; }
+      .stop-chip { min-width:104px; }
+    }
+  
+
+    .flight-badge{display:inline-flex;align-items:center;gap:8px;margin-left:10px;padding:6px 12px;border-radius:999px;background:linear-gradient(135deg, rgba(51,216,255,.16), rgba(139,92,246,.18));border:1px solid rgba(56,189,248,.28);color:#0f172a;font-size:12px;font-weight:900;letter-spacing:.02em;vertical-align:middle;}
+    .flight-inline{display:inline-flex;align-items:center;gap:8px;margin-left:10px;padding:5px 10px;border-radius:999px;background:#eef6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:12px;font-weight:900;vertical-align:middle;}
+    .mini-pill{display:inline-flex;align-items:center;margin-left:10px;padding:5px 10px;border-radius:999px;background:#0f172a;color:#fff;font-size:12px;font-weight:800;vertical-align:middle;}
+    .route-note{margin-top:12px;padding:12px 14px;border-radius:16px;background:#f4f9ff;border:1px solid #d6e8ff;color:#0f172a;font-weight:700;line-height:1.7;}
+    .route-note .kr{margin-top:6px;color:#58667d;}
+    span.stop-chip{display:inline-flex;align-items:flex-start;gap:8px;padding:12px 14px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:var(--soft);min-width:0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<div class="hero-box">
+<div class="eyebrow">✈ 2026 TAIWAN · KAOHSIUNG 高雄 <span class="kr">2026 대만 · 가오슝</span></div>
+<h1>진하♥야멍 高雄五天四夜</h1>
+<div class="hero-sub">霓光夜色 × 海港散步 × 韓系精緻版 <span class="kr">네온 무드 × 항구 산책 × 한국 감성 버전</span></div>
+<div class="summary-grid">
+<div class="glass-card"><div class="label">Date</div><div class="value">2026/04/02 – 04/06<span class="kr">2026/04/02 – 04/06</span></div></div>
+<div class="glass-card"><div class="label">Hotel</div><div class="value">頭等艙飯店 高雄站前館<span class="kr">에어라인 인 가오슝 스테이션</span></div><a class="hotel-map" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank">📍 <span>Hotel MAP</span></a></div>
+<div class="glass-card"><div class="label">Travelers</div><div class="value">2人（情侶）<span class="kr">2인 (커플)</span></div></div>
+<div class="glass-card"><div class="label">Transit</div><div class="value">高雄捷運＋渡輪<span class="kr">가오슝 지하철 + 페리</span></div></div>
+</div>
+<div class="weather-grid">
+<div class="glass-card weather-card"><div class="date">4/2 Thu</div><div class="temp">27 / 23°C</div><div>☀️ 晴，抵達日<span class="kr">맑음, 도착일</span></div></div>
+<div class="glass-card weather-card"><div class="date">4/3 Fri</div><div class="temp">28 / 23°C</div><div>⛅ 晴時多雲<span class="kr">맑고 가끔 구름</span></div></div>
+<div class="glass-card weather-card"><div class="date">4/4 Sat</div><div class="temp">29 / 24°C</div><div>☀️ 晴，適合海線<span class="kr">맑음, 해안 코스 적합</span></div></div>
+<div class="glass-card weather-card"><div class="date">4/5 Sun</div><div class="temp">29 / 24°C</div><div>☀️ 晴，注意防曬<span class="kr">맑음, 자외선 주의</span></div></div>
+<div class="glass-card weather-card"><div class="date">4/6 Mon</div><div class="temp">28 / 23°C</div><div>⛅ 離境日<span class="kr">출발일</span></div></div>
+</div>
+</div>
+</section>
+<div class="section-tools">
+<button class="tool-btn" onclick="document.querySelectorAll('details.day').forEach(d=&gt;d.open=true)">全部展開 / 모두 펼치기</button>
+<button class="tool-btn" onclick="document.querySelectorAll('details.day').forEach(d=&gt;d.open=false)">全部收合 / 모두 접기</button>
+</div>
+<section class="days">
+<details class="day" open="">
+<summary>
+<div class="badge">D1</div>
+<div><div class="sum-title">抵達高雄，回飯店休息<span class="flight-badge">✈ IT663｜GMP 20:35 → KHH 22:40</span><span class="kr">가오슝 도착 후 호텔 체크인</span></div><div class="sum-date">2026/04/02（四）Thursday</div></div>
+<div class="arrow">⌄</div>
+</summary>
+<div class="day-body"><div class="row-list">
+<div class="item">
+<div class="time">22:40</div>
+<div class="content">
+<div class="title">高雄國際機場抵達<span class="flight-inline">IT663｜GMP 20:35 → KHH 22:40</span><span class="kr">가오슝 국제공항 도착</span></div>
+<div class="meta"><div>航班資訊：IT663／GMP 20:35 → KHH 22:40。抵達後步行入境、領行李，先完成 SIM 卡／悠遊卡等基本整理。</div><div class="kr">항공편 정보 : IT663 / GMP 20:35 → KHH 22:40. 도착 후 입국 심사와 수하물 수령, SIM 카드·교통카드 정리.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20International%20Airport&amp;query_place_id=ChIJmbv2P84cbjQRKdFFacSu6hw" rel="noopener" target="_blank"><strong>高雄國際機場</strong><span>가오슝 국제공항</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>—</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20International%20Airport&amp;query_place_id=ChIJmbv2P84cbjQRKdFFacSu6hw" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">23:20</div>
+<div class="content">
+<div class="title">前往頭等艙飯店 高雄站前館<span class="kr">에어라인 인 가오슝 스테이션 이동</span></div>
+<div class="meta"><div><b>交通攻略</b>：高雄國際機場 → 小港站（R4）搭捷運紅線直達高雄車站（R11），出站後步行約5–7分鐘到飯店，總計約35–40分鐘。</div><div class="kr"><b>교통</b> : 가오슝 국제공항 → 샤오강역(R4)에서 레드라인 탑승 → 가오슝역(R11) 하차 후 도보 5~7분, 총 약 35~40분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20International%20Airport&amp;query_place_id=ChIJmbv2P84cbjQRKdFFacSu6hw" rel="noopener" target="_blank"><strong>高雄國際機場</strong><span>가오슝 국제공항</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Siaogang&amp;query_place_id=ChIJ1cspntccbjQRmosyfdqI0rE" rel="noopener" target="_blank"><strong>小港站 R4</strong><span>샤오강역 R4</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$35</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+</div></div>
+</details>
+<details class="day">
+<summary>
+<div class="badge">D2</div>
+<div><div class="sum-title">鹽埕深度探索<span class="kr">옌청 감성 산책</span></div><div class="sum-date">2026/04/03（五）Friday</div></div>
+<div class="arrow">⌄</div>
+</summary>
+<div class="day-body"><div class="row-list">
+<div class="item">
+<div class="time">11:30</div>
+<div class="content">
+<div class="title">港園牛肉麵（午餐）<span class="kr">강위안 우육면 (점심)</span></div>
+<div class="meta"><div><b>交通攻略</b>：飯店 → 高雄車站（R11）搭紅線到美麗島站換橘線 → 鹽埕埔站（O2），出站步行約8分鐘，總計約20分鐘。</div><div class="kr"><b>교통</b> : 호텔 → 가오슝역(R11)에서 레드라인 탑승 → 메이리다오역 환승 → 옌청푸역(O2) 하차 후 도보 약 8분, 총 약 20분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Formosa%20Boulevard%20Station&amp;query_place_id=ChIJ10T7XIkEbjQRo5UX1nWHLx8" rel="noopener" target="_blank"><strong>美麗島站 R10/O5</strong><span>메이리다오역 R10/O5</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Yanchengpu&amp;query_place_id=ChIJz2CQF3cEbjQRsaYILt1u1r4" rel="noopener" target="_blank"><strong>鹽埕埔站 O2</strong><span>옌청푸역 O2</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gang%20Yuan%20Beef%20Noodle%20Restaurant&amp;query_place_id=ChIJWc-YTngEbjQRR1Y3THS-JeQ" rel="noopener" target="_blank"><strong>港園牛肉麵</strong><span>강위안 우육면</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$120–160</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Gang%20Yuan%20Beef%20Noodle%20Restaurant&amp;query_place_id=ChIJWc-YTngEbjQRR1Y3THS-JeQ" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">12:30</div>
+<div class="content">
+<div class="title">駁二藝術特區<span class="kr">보얼 예술특구</span></div>
+<div class="meta"><div><b>交通攻略</b>：港園牛肉麵 → 沿大成街與駁二園區方向步行約12–15分鐘即可抵達。</div><div class="kr"><b>교통</b> : 강위안 우육면 → 보얼 예술특구까지 도보 약 12~15분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gang%20Yuan%20Beef%20Noodle%20Restaurant&amp;query_place_id=ChIJWc-YTngEbjQRR1Y3THS-JeQ" rel="noopener" target="_blank"><strong>港園牛肉麵</strong><span>강위안 우육면</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Pier2%20Art%20Center&amp;query_place_id=ChIJW8ThIHYEbjQR8k12HL3R1uY" rel="noopener" target="_blank"><strong>駁二藝術特區</strong><span>보얼 예술특구</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>免費～NT$200</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Pier2%20Art%20Center&amp;query_place_id=ChIJW8ThIHYEbjQR8k12HL3R1uY" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">15:00</div>
+<div class="content">
+<div class="title">大港橋旋轉秀<span class="kr">다강교 회전쇼</span></div>
+<div class="meta"><div><b>交通攻略</b>：駁二藝術特區園區內散步前往大港橋，步行約8–10分鐘。</div><div class="kr"><b>교통</b> : 보얼 예술특구 내부에서 다강교까지 도보 약 8~10분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Pier2%20Art%20Center&amp;query_place_id=ChIJW8ThIHYEbjQR8k12HL3R1uY" rel="noopener" target="_blank"><strong>駁二藝術特區</strong><span>보얼 예술특구</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Great%20Harbor%20Bridge&amp;query_place_id=ChIJJQ_oku8FbjQRD8vKIG-qlfc" rel="noopener" target="_blank"><strong>大港橋</strong><span>다강교</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>免費</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Great%20Harbor%20Bridge&amp;query_place_id=ChIJJQ_oku8FbjQRD8vKIG-qlfc" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">18:00</div>
+<div class="content">
+<div class="title">鹽埕區晚餐＋甜點散步<span class="mini-pill">建議順吃</span><span class="kr">옌청 저녁 + 디저트 산책</span></div>
+<div class="meta"><div><b>交通攻略</b>：大港橋周邊步行覓食即可，各店多在鹽埕核心範圍內。結束後由鹽埕埔站（O2）→ 美麗島站換紅線 → 高雄車站（R11），再步行回飯店，總計約20分鐘。</div><div class="kr"><b>교통</b> : 다강교 주변에서 도보로 이동하며 식사 가능. 식사 후 옌청푸역(O2) → 메이리다오역 환승 → 가오슝역(R11) 이동 후 호텔까지 도보, 총 약 20분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Great%20Harbor%20Bridge&amp;query_place_id=ChIJJQ_oku8FbjQRD8vKIG-qlfc" rel="noopener" target="_blank"><strong>大港橋</strong><span>다강교</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Yanchengpu&amp;query_place_id=ChIJz2CQF3cEbjQRsaYILt1u1r4" rel="noopener" target="_blank"><strong>鹽埕埔站 O2</strong><span>옌청푸역 O2</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Formosa%20Boulevard%20Station&amp;query_place_id=ChIJ10T7XIkEbjQRo5UX1nWHLx8" rel="noopener" target="_blank"><strong>美麗島站 R10/O5</strong><span>메이리다오역 R10/O5</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a></div></div>
+<div class="sublist"><div class="subitem"><div class="name">1. 駁二阿婆黑輪·大腸包小腸<span class="kr">보얼 아포 헤이룬</span></div><div class="price">NT$45–90</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=駁二阿婆黑輪%20大腸包小腸&amp;query_place_id=ChIJU01EDHYEbjQR1AiSU-okHkw" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">2. 鴨肉珍（總店）<span class="kr">압육진 본점</span></div><div class="price">NT$100–220</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Duck%20Zhen&amp;query_place_id=ChIJK07QTXEEbjQRb0iVHEV453M" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">3. 藕家飲品<span class="kr">어우자 음료</span></div><div class="price">NT$50–90</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=藕家飲品&amp;query_place_id=ChIJ8So408EFbjQRbXU5_3mpM00" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">4. 李家圓仔湯<span class="kr">리자 위안자탕</span></div><div class="price">NT$50–80</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=李家圓仔湯&amp;query_place_id=ChIJ1VT3xXYEbjQRVPe2Vp3ynZw" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">5. 高雄婆婆冰旗艦店<span class="kr">가오슝 포포빙 플래그십점</span></div><div class="price">NT$60–120</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=高雄婆婆冰旗艦店&amp;query_place_id=ChIJgyGLPHEEbjQRvt9Wh0i-2zU" rel="noopener" target="_blank">📍 <span>MAP</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$50–300</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Duck%20Zhen&amp;query_place_id=ChIJK07QTXEEbjQRb0iVHEV453M" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+</div></div>
+</details>
+<details class="day">
+<summary>
+<div class="badge">D3</div>
+<div><div class="sum-title">旗津海線漫遊＋六合夜市<span class="kr">치진 해안 산책 + 리우허 야시장</span></div><div class="sum-date">2026/04/04（六）Saturday</div></div>
+<div class="arrow">⌄</div>
+</summary>
+<div class="day-body"><div class="row-list">
+<div class="item">
+<div class="time">10:00</div>
+<div class="content">
+<div class="title">鼓山輪渡站搭船<span class="kr">구산 페리 선착장 이동</span></div>
+<div class="meta"><div><b>交通攻略</b>：飯店 → 高雄車站（R11）搭紅線至美麗島站換橘線 → 哈瑪星站（O1），出站步行約5分鐘到鼓山輪渡站，總計約15–20分鐘。</div><div class="kr"><b>교통</b> : 호텔 → 가오슝역(R11)에서 레드라인 탑승 → 메이리다오역 환승 → 하마싱역(O1) 하차 후 도보 약 5분, 총 약 15~20분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Formosa%20Boulevard%20Station&amp;query_place_id=ChIJ10T7XIkEbjQRo5UX1nWHLx8" rel="noopener" target="_blank"><strong>美麗島站 R10/O5</strong><span>메이리다오역 R10/O5</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Hamasen&amp;query_place_id=ChIJbQ2MpgoEbjQRhMYFPJGXEwk" rel="noopener" target="_blank"><strong>哈瑪星站 O1</strong><span>하마싱역 O1</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQR5xvpkq1UyfI" rel="noopener" target="_blank"><strong>鼓山輪渡站</strong><span>구산 페리 선착장</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$30</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQR5xvpkq1UyfI" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">11:00</div>
+<div class="content">
+<div class="title">旗津老街小吃<span class="mini-pill">順路小吃</span><span class="kr">치진 옛거리 길거리 음식</span></div>
+<div class="meta"><div><b>交通攻略</b>：鼓山輪渡站搭渡輪前往旗津，航程約10分鐘；下船步行即達旗津老街。</div><div class="kr"><b>교통</b> : 구산 페리 선착장에서 치진으로 이동, 페리 약 10분. 하선 후 도보로 바로 치진 옛거리 도착.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQR5xvpkq1UyfI" rel="noopener" target="_blank"><strong>鼓山輪渡站</strong><span>구산 페리 선착장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQRF5IoKLN4LMA" rel="noopener" target="_blank"><strong>旗津輪渡站</strong><span>치진 페리 선착장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Old%20Street&amp;query_place_id=ChIJay59ifEDbjQRld7ipbyyH-4" rel="noopener" target="_blank"><strong>旗津老街</strong><span>치진 옛거리</span></a></div></div>
+<div class="sublist"><div class="subitem"><div class="name">1. 椪嫂蕃薯椪<span class="kr">펑사오 고구마빵</span></div><div class="price">NT$30–50</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=椪嫂蕃薯椪&amp;query_place_id=ChIJKULy9fEDbjQRq7y9DHSx0cU" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">2. 旗津旗海園碳烤小卷<span class="kr">치진 치하이위안 숯불구이 한치</span></div><div class="price">NT$120–200</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=旗津旗海園碳烤小卷&amp;query_place_id=ChIJn4on0vkDbjQRsI7y6wC-2WY" rel="noopener" target="_blank">📍 <span>MAP</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$80–180</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Old%20Street&amp;query_place_id=ChIJay59ifEDbjQRld7ipbyyH-4" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">12:30</div>
+<div class="content">
+<div class="title">旗津腳踏車漫遊（海岸線）<span class="mini-pill">建議路線</span><span class="kr">치진 자전거 해안선 코스</span></div>
+<div class="meta"><div>交通攻略：從旗津老街先順吃兩家小吃，再在老街附近租腳踏車，之後沿北往南海岸線依序走訪旗津天后宮、旗津星空隧道、旗後砲台、旗後燈塔、旗津彩虹教堂，最後回到旗津輪渡站；整段悠閒玩約 3.5–4.5 小時。</div><div class="kr">교통 : 치진 옛거리에서 간식을 먼저 먹고 근처에서 자전거를 빌린 뒤, 북쪽에서 남쪽 방향으로 천후궁 → 별빛터널 → 치허우 포대 → 치허우 등대 → 무지개교회 순서로 이동 후 치진 페리 선착장으로 복귀. 전체 약 3.5~4.5시간.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQR5xvpkq1UyfI" rel="noopener" target="_blank"><strong>鼓山輪渡站</strong><span>구산 페리 선착장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQRF5IoKLN4LMA" rel="noopener" target="_blank"><strong>旗津輪渡站</strong><span>치진 페리 선착장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Old%20Street&amp;query_place_id=ChIJay59ifEDbjQRld7ipbyyH-4" rel="noopener" target="_blank"><strong>旗津老街</strong><span>치진 옛거리</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=椪嫂蕃薯椪&amp;query_place_id=ChIJKULy9fEDbjQRq7y9DHSx0cU" rel="noopener" target="_blank"><strong>1. 椪嫂蕃薯椪</strong><span>펑사오 고구마빵</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=旗津旗海園碳烤小卷&amp;query_place_id=ChIJn4on0vkDbjQRsI7y6wC-2WY" rel="noopener" target="_blank"><strong>2. 旗津旗海園碳烤小卷</strong><span>치하이위안 숯불구이 한치</span></a><span class="stop-chip"><strong>租腳踏車</strong><span>자전거 대여</span></span><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Tianhou%20Temple&amp;query_place_id=ChIJw5Es9fEDbjQRwouNEzeC4bA" rel="noopener" target="_blank"><strong>旗津天后宮</strong><span>치진 천후궁</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Tunnel&amp;query_place_id=ChIJWWyazq8DbjQRzetcduKS3CE" rel="noopener" target="_blank"><strong>旗津星空隧道</strong><span>치진 별빛터널</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Qihou%20Fort&amp;query_place_id=ChIJWWyazq8DbjQRHO8p1aIBZ-E" rel="noopener" target="_blank"><strong>旗後砲台</strong><span>치허우 포대</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Lighthouse&amp;query_place_id=ChIJifn-9_ADbjQRTR2Q9DmlzEo" rel="noopener" target="_blank"><strong>旗後燈塔</strong><span>치허우 등대</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Rainbow%20Church&amp;query_place_id=ChIJ0_ICyuoDbjQRSaeDnHxL0ok" rel="noopener" target="_blank"><strong>旗津彩虹教堂</strong><span>치진 무지개교회</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQRF5IoKLN4LMA" rel="noopener" target="_blank"><strong>返回旗津輪渡站</strong><span>치진 페리 선착장 복귀</span></a></div><div class="route-note">建議路線：鼓山輪渡站 → 旗津輪渡站 → 旗津老街（1. 椪嫂蕃薯椪 → 2. 旗津旗海園碳烤小卷）→ 租腳踏車 → 旗津天后宮 → 旗津星空隧道 → 旗後砲台 → 旗後燈塔 → 旗津彩虹教堂 → 返回旗津輪渡站。若想輕鬆一點，可在星空隧道後把腳踏車停妥，再步行上砲台與燈塔。<span class="kr">추천 루트 : 구산 페리 선착장 → 치진 페리 선착장 → 치진 옛거리 (1. 펑사오 고구마빵 → 2. 치하이위안 숯불구이 한치) → 자전거 대여 → 천후궁 → 별빛터널 → 치허우 포대 → 치허우 등대 → 무지개교회 → 치진 페리 선착장 복귀. 조금 더 편하게 즐기고 싶다면 별빛터널 이후에는 자전거를 세워두고 포대·등대를 도보로 올라가도 좋아요.</span></div></div>
+<div class="sublist"><div class="subitem"><div class="name">1. 旗津天后宮<span class="kr">치진 천후궁</span></div><div class="price">含於租車動線</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Tianhou%20Temple&amp;query_place_id=ChIJw5Es9fEDbjQRwouNEzeC4bA" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">2. 旗津星空隧道<span class="kr">치진 별빛터널</span></div><div class="price">含於租車動線</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Tunnel&amp;query_place_id=ChIJWWyazq8DbjQRzetcduKS3CE" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">3. 旗後砲台<span class="kr">치허우 포대</span></div><div class="price">含於租車動線</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Qihou%20Fort&amp;query_place_id=ChIJWWyazq8DbjQRHO8p1aIBZ-E" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">4. 旗後燈塔<span class="kr">치허우 등대</span></div><div class="price">含於租車動線</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Lighthouse&amp;query_place_id=ChIJifn-9_ADbjQRTR2Q9DmlzEo" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">5. 旗津彩虹教堂<span class="kr">치진 무지개교회</span></div><div class="price">含於租車動線</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Rainbow%20Church&amp;query_place_id=ChIJ0_ICyuoDbjQRSaeDnHxL0ok" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">6. 返回旗津輪渡站<span class="kr">치진 페리 선착장 복귀</span></div><div class="price">回程渡輪點</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQRF5IoKLN4LMA" rel="noopener" target="_blank">📍 <span>MAP</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$100–150</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Cijin%20Old%20Street&amp;query_place_id=ChIJay59ifEDbjQRld7ipbyyH-4" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">18:30</div>
+<div class="content">
+<div class="title">六合夜市（晚餐）＋回飯店<span class="mini-pill">建議順吃</span><span class="kr">리우허 야시장 (저녁) + 호텔 복귀</span></div>
+<div class="meta"><div><b>交通攻略</b>：旗津輪渡站搭船回鼓山 → 哈瑪星站（O1）搭橘線到美麗島站（R10/O5），步行約1–3分鐘到六合夜市。吃完後直接由美麗島站搭紅線一站回高雄車站（R11），再步行回飯店，總計約30分鐘。</div><div class="kr"><b>교통</b> : 치진에서 페리로 구산 복귀 → 하마싱역(O1)에서 오렌지라인 탑승 → 메이리다오역(R10/O5) 하차 후 도보 1~3분. 식사 후 메이리다오역에서 레드라인 한 정거장으로 가오슝역(R11) 이동 후 호텔 복귀, 총 약 30분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQRF5IoKLN4LMA" rel="noopener" target="_blank"><strong>旗津輪渡站</strong><span>치진 페리 선착장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Gushan%20Ferry%20Pier%20Station&amp;query_place_id=ChIJg1VQtfUDbjQR5xvpkq1UyfI" rel="noopener" target="_blank"><strong>鼓山輪渡站</strong><span>구산 페리 선착장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Hamasen&amp;query_place_id=ChIJbQ2MpgoEbjQRhMYFPJGXEwk" rel="noopener" target="_blank"><strong>哈瑪星站 O1</strong><span>하마싱역 O1</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Formosa%20Boulevard%20Station&amp;query_place_id=ChIJ10T7XIkEbjQRo5UX1nWHLx8" rel="noopener" target="_blank"><strong>美麗島站 R10/O5</strong><span>메이리다오역 R10/O5</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Liuhe%20Night%20Market&amp;query_place_id=ChIJxznXwIsEbjQR_eygv0Lo5tM" rel="noopener" target="_blank"><strong>六合夜市</strong><span>리우허 야시장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a></div></div>
+<div class="sublist"><div class="subitem"><div class="name">1. 饗稻狀元糕x歐呦 美麗島店<span class="kr">샹다오 좡위안가오 메이리다오점</span></div><div class="price">NT$50–90</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=饗稻狀元糕%20歐呦%20美麗島店&amp;query_place_id=ChIJl-x-XD8FbjQRaoph5K5zb98" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">2. 盛奕大腸包小腸<span class="kr">성이 대창소시지</span></div><div class="price">NT$60–100</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=盛奕大腸包小腸&amp;query_place_id=ChIJ8c3T8_0EbjQR8LW6gf3qi9s" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">3. 楊記老牌肉圓割包<span class="kr">양지 노포 육원과바오</span></div><div class="price">NT$60–100</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=楊家肉圓%20刈包&amp;query_place_id=ChIJKTktNo4EbjQRZjkmvyLEtMk" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">4. 鹽水意麵<span class="kr">옌수이 이면</span></div><div class="price">NT$60–100</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=老店麵%20鹽水意麵晚上營業&amp;query_place_id=ChIJU1Ul0YsEbjQRq7KxqMW3epI" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">5. 鄭老牌木瓜牛奶<span class="kr">정노포 파파야우유</span></div><div class="price">NT$60–90</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=鄭老牌木瓜牛奶&amp;query_place_id=ChIJa-X9Y6IFbjQRUs_Ge-cMPFE" rel="noopener" target="_blank">📍 <span>MAP</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$200–350</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Liuhe%20Night%20Market&amp;query_place_id=ChIJxznXwIsEbjQR_eygv0Lo5tM" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+</div></div>
+</details>
+<details class="day">
+<summary>
+<div class="badge">D4</div>
+<div><div class="sum-title">左營慢旅<span class="kr">줘잉 하루 산책</span></div><div class="sum-date">2026/04/05（日）Sunday</div></div>
+<div class="arrow">⌄</div>
+</summary>
+<div class="day-body"><div class="row-list">
+<div class="item">
+<div class="time">11:00</div>
+<div class="content">
+<div class="title">龍虎塔<span class="kr">용호탑</span></div>
+<div class="meta"><div><b>交通攻略</b>：飯店 → 高雄車站（R11）搭紅線到生態園區站（R15），再轉公車或計程車前往龍虎塔，總計約35分鐘。</div><div class="kr"><b>교통</b> : 호텔 → 가오슝역(R11)에서 레드라인 탑승 → 생태원구역(R15) 하차 후 버스 또는 택시 환승, 총 약 35분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Ecological%20District%20Station&amp;query_place_id=ChIJxepBBg0FbjQRrlSTumJ3JRw" rel="noopener" target="_blank"><strong>生態園區站 R15</strong><span>생태원구역 R15</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Dragon%20and%20Tiger%20Pagodas&amp;query_place_id=ChIJJcBAjaEFbjQRx4A8dRM2bVI" rel="noopener" target="_blank"><strong>龍虎塔</strong><span>용호탑</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>免費</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Dragon%20and%20Tiger%20Pagodas&amp;query_place_id=ChIJJcBAjaEFbjQRx4A8dRM2bVI" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">12:15</div>
+<div class="content">
+<div class="title">果貿吳媽家餃子（午餐）<span class="kr">궈마오 우마자 만두 (점심)</span></div>
+<div class="meta"><div><b>交通攻略</b>：龍虎塔 → 步行約15–20分鐘；若天氣熱可改搭計程車約5分鐘。</div><div class="kr"><b>교통</b> : 용호탑 → 도보 약 15~20분, 더우면 택시 약 5분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Dragon%20and%20Tiger%20Pagodas&amp;query_place_id=ChIJJcBAjaEFbjQRx4A8dRM2bVI" rel="noopener" target="_blank"><strong>龍虎塔</strong><span>용호탑</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=果貿吳媽家餃子&amp;query_place_id=ChIJA4SsZ68FbjQRdvh6v4XbDYU" rel="noopener" target="_blank"><strong>果貿吳媽家餃子</strong><span>궈마오 우마자 만두</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$80–180</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=果貿吳媽家餃子&amp;query_place_id=ChIJA4SsZ68FbjQRdvh6v4XbDYU" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">13:30</div>
+<div class="content">
+<div class="title">果貿社區<span class="kr">궈마오 커뮤니티</span></div>
+<div class="meta"><div><b>交通攻略</b>：果貿吳媽家餃子用餐後步行約5–8分鐘到果貿社區拍照。</div><div class="kr"><b>교통</b> : 우마자 만두 식사 후 궈마오 커뮤니티까지 도보 약 5~8분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=果貿吳媽家餃子&amp;query_place_id=ChIJA4SsZ68FbjQRdvh6v4XbDYU" rel="noopener" target="_blank"><strong>果貿吳媽家餃子</strong><span>궈마오 우마자 만두</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=果貿社區&amp;query_place_id=ChIJebvvSX8FbjQRGirE_jwi9EY" rel="noopener" target="_blank"><strong>果貿社區</strong><span>궈마오 커뮤니티</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>免費</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=果貿社區&amp;query_place_id=ChIJebvvSX8FbjQRGirE_jwi9EY" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">17:30</div>
+<div class="content">
+<div class="title">瑞豐夜市<span class="mini-pill">建議順吃</span><span class="kr">루이펑 야시장</span></div>
+<div class="meta"><div><b>交通攻略</b>：果貿社區 → 計程車約10分鐘，或步行約20分鐘可達瑞豐夜市。</div><div class="kr"><b>교통</b> : 궈마오 커뮤니티 → 택시 약 10분 또는 도보 약 20분으로 루이펑 야시장 이동.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=果貿社區&amp;query_place_id=ChIJebvvSX8FbjQRGirE_jwi9EY" rel="noopener" target="_blank"><strong>果貿社區</strong><span>궈마오 커뮤니티</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Ruifeng%20Night%20Market&amp;query_place_id=ChIJG12iPwcFbjQR8vPAeEnvkX8" rel="noopener" target="_blank"><strong>瑞豐夜市</strong><span>루이펑 야시장</span></a></div></div>
+<div class="sublist"><div class="subitem"><div class="name">1. 曾氏福建炒麵<span class="kr">쩡씨 푸젠 볶음면</span></div><div class="price">NT$90–140</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=曾氏福建炒麵&amp;query_place_id=ChIJ3xejHgcFbjQRwuCs3wqk-a0" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">2. 天使雞排<span class="kr">엔젤 치킨</span></div><div class="price">NT$80–100</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Angel%20Fried%20Chicken&amp;query_place_id=ChIJWTpGHwcFbjQRo0UUaxCy-kM" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">3. 沖繩酥炸大魷魚<span class="kr">오키나와 바삭 오징어튀김</span></div><div class="price">NT$100–160</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=沖繩酥炸大魷魚&amp;query_place_id=ChIJb_eLGQcFbjQRRaLcQIyXg_8" rel="noopener" target="_blank">📍 <span>MAP</span></a></div><div class="subitem"><div class="name">4. 蘋什麼日式蘋果糖 Candy Apple<span class="kr">핑스머 일본식 사과사탕</span></div><div class="price">NT$80–150</div><a class="sub-map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=蘋什麼日式蘋果糖%20Candy%20Apple&amp;query_place_id=ChIJhx6WrEAFbjQRsfPsQ8k2N8o" rel="noopener" target="_blank">📍 <span>MAP</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$250–400</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Ruifeng%20Night%20Market&amp;query_place_id=ChIJG12iPwcFbjQR8vPAeEnvkX8" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">21:15</div>
+<div class="content">
+<div class="title">奕欣洋行自由店＋回飯店<span class="kr">이신 양행 자유점 + 호텔 복귀</span></div>
+<div class="meta"><div><b>交通攻略</b>：瑞豐夜市 → 奕欣洋行自由店可搭計程車約10分鐘，或步行至巨蛋站（R14）周邊再轉乘。逛完後由巨蛋站（R14）搭紅線回高雄車站（R11），步行回飯店；若直接計程車回飯店約15–20分鐘。</div><div class="kr"><b>교통</b> : 루이펑 야시장 → 이신 양행 자유점까지 택시 약 10분. 방문 후 거단역(R14)에서 레드라인으로 가오슝역(R11) 이동 후 호텔까지 도보, 또는 택시로 호텔 약 15~20분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Ruifeng%20Night%20Market&amp;query_place_id=ChIJG12iPwcFbjQR8vPAeEnvkX8" rel="noopener" target="_blank"><strong>瑞豐夜市</strong><span>루이펑 야시장</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=奕欣洋行自由店&amp;query_place_id=ChIJh7XLuJwFbjQR7zMXQs03fjc" rel="noopener" target="_blank"><strong>奕欣洋行自由店</strong><span>이신 양행 자유점</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Arena&amp;query_place_id=ChIJOzLzKQQFbjQR6t63k3eBtGg" rel="noopener" target="_blank"><strong>巨蛋站 R14</strong><span>거단역 R14</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>自由購物</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=奕欣洋行自由店&amp;query_place_id=ChIJh7XLuJwFbjQR7zMXQs03fjc" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+</div></div>
+</details>
+<details class="day">
+<summary>
+<div class="badge">D5</div>
+<div><div class="sum-title">道別高雄<span class="flight-badge">✈ IT662｜KHH 16:00 → GMP 19:45</span><span class="kr">가오슝과 작별</span></div><div class="sum-date">2026/04/06（一）Monday</div></div>
+<div class="arrow">⌄</div>
+</summary>
+<div class="day-body"><div class="row-list">
+<div class="item">
+<div class="time">11:00</div>
+<div class="content">
+<div class="title">飯店退房＋寄放行李<span class="kr">호텔 체크아웃 + 짐 보관</span></div>
+<div class="meta"><div><b>交通攻略</b>：飯店內辦理退房與寄放行李。</div><div class="kr"><b>교통</b> : 호텔에서 체크아웃 후 짐 보관.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>—</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">11:15</div>
+<div class="content">
+<div class="title">高雄車站周邊自由早午餐<span class="kr">가오슝역 주변 자유 브런치</span></div>
+<div class="meta"><div><b>交通攻略</b>：飯店步行前往高雄車站商圈與周邊早餐店，約5–10分鐘。</div><div class="kr"><b>교통</b> : 호텔에서 가오슝역 상권까지 도보 약 5~10분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Airline%20Inn%20Kaohsiung%20Station&amp;query_place_id=ChIJM4lINIsEbjQRXfJr6E9JspY" rel="noopener" target="_blank"><strong>頭等艙飯店 高雄站前館</strong><span>에어라인 인 가오슝 스테이션</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$80–200</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+<div class="item">
+<div class="time">12:30</div>
+<div class="content">
+<div class="title">前往高雄國際機場<span class="flight-inline">IT662｜KHH 16:00 → GMP 19:45</span><span class="kr">가오슝 국제공항 이동</span></div>
+<div class="meta"><div>航班資訊：IT662／KHH 16:00 → GMP 19:45。建議預留充裕時間前往機場，高雄車站（R11）搭紅線直達小港站（R4），出站步行約 5 分鐘至航廈，總計約 30 分鐘。</div><div class="kr">항공편 정보 : IT662 / KHH 16:00 → GMP 19:45. 공항까지 여유 있게 이동 추천. 가오슝역(R11)에서 레드라인으로 샤오강역(R4) 이동 후 도보 약 5분, 총 약 30분.</div><div class="stops"><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20Station&amp;query_place_id=ChIJpwcdh_QEbjQRSealHm8pucw" rel="noopener" target="_blank"><strong>高雄車站 R11</strong><span>가오슝역 R11</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Siaogang&amp;query_place_id=ChIJ1cspntccbjQRmosyfdqI0rE" rel="noopener" target="_blank"><strong>小港站 R4</strong><span>샤오강역 R4</span></a><a class="stop-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20International%20Airport&amp;query_place_id=ChIJmbv2P84cbjQRKdFFacSu6hw" rel="noopener" target="_blank"><strong>高雄國際機場</strong><span>가오슝 국제공항</span></a></div></div>
+</div>
+<div class="price"><small>EST.</small>NT$35</div>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kaohsiung%20International%20Airport&amp;query_place_id=ChIJmbv2P84cbjQRKdFFacSu6hw" rel="noopener" target="_blank">📍 <span>Google Maps</span></a>
+</div>
+</div></div>
+</details>
+</section>
+<div class="note">
+<strong>此次版本重點 / 이번 버전 핵심</strong>
+      已依需求把每個行程時間放在最前面、把「高雄」韓文統一為「가오슝」、標題改為「진하♥야멍 高雄五天四夜」、刪除 D3 的「萬二小吃部海產店」、將旗津景點完整收進「旗津腳踏車漫遊」下方，並把 map icon 改成更明顯的 Google Maps 按鈕。
+      <span class="kr">모든 일정의 시간을 맨 앞으로 배치했고, '高雄'의 한국어는 '가오슝'으로 통일했습니다. 제목은 '진하♥야멍 高雄五天四夜'로 수정했고, D3의 '완이 해산물 식당'은 삭제했습니다. 치진 명소는 모두 '치진 자전거 해안선 코스' 아래로 통합했으며, 지도 아이콘은 더 눈에 띄는 Google Maps 버튼으로 변경했습니다.</span>
+</div>
+<div class="footer">Mobile friendly · Public-share ready · Google Maps verified by place ID</div>
+</div>
+</body>
+</html>
